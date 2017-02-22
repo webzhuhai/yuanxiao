@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>元宵</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<script src="js/swiper.min.js"></script>
+	<script src="js/jquery-1.10.1.min.js"></script>
+	<script src="js/swiper.animate1.0.2.min.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		.swiper-container{
+			height:100%;
+		}
+		.swiper-slide{
+			width: 100%;
+			z-index: 888;
+			position:relative;
+		}
+		.swiper-slide img{
+			display: block;
+			width: 100%;
+		}
+
+
+		.swiper-slide .wel img{
+			position: absolute;
+			top: 20%;
+			left: 25%;
+			width: 50%
+		}
+		.swiper-slide .wel .cover{
+			width: 300px;
+			height:300px;
+			background: white;
+			position: absolute;
+		}
+		.swiper-slide.first{
+			background-image: url(images/01.jpg);
+			background-size: 100% 100%;
+		}
+
+		/* 滑动指示 */
+		.up{
+			position:relative;
+			bottom:50px;
+			width: 10%;
+			height: 5%;
+			margin:auto;
+		}
+		.upicon{
+			position:absolute;
+	      	width:100%;
+	      	height:100%;
+	        background:url(images/arrow.png) no-repeat center;
+	        background-size: 100% 100%;
+	        z-index: 999;
+		}
+		/* music */
+		#music{
+			width: 60px;
+			height: 60px;
+			position: fixed;
+			top: 10px;
+			right: 10px;
+			z-index: 999;
+		}
+		#music .music_bg{
+			width: 60px;
+			height: 60px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		#music .music_pic{
+			position: absolute;
+			top: 8px;
+			left: 8px;
+			animation: music 2s linear infinite;
+		}
+
+		@keyframes music{
+			from{
+				transform: rotate(0deg);
+			}
+			to{
+				transform: rotate(360deg);
+			}
+		}
+
+		/* second */
+		.swiper-slide.second{
+			background-image: url(images/bg.png);
+			background-size: 100% 100%;
+		    position:relative; 
+		}
+		.swiper-slide.second .second1{
+			position: absolute;
+			width: 58%;
+			left: 40%;
+			top: 3%;
+		}
+
+		.swiper-slide.second .second_2{
+			position: absolute;
+			width: 58%;
+			top: 35%;
+			left: 3%;
+
+		}
+
+		.swiper-slide.second .second_3{
+			position: absolute;
+			width: 58%;
+			top: 35%;
+			left: 3%;
+		}
+
+		/* third */
+		.swiper-slide.third{
+			background-image: url(images/bg.png);
+			background-size: 100% 100%;
+			position: relative;
+		}
+		.swiper-slide.third .third_1{
+			position: absolute;
+			width: 58%;
+			left: 5%;
+			top: 10%;
+		}
+		.swiper-slide.third .third_2{
+			position: absolute;
+			width: 58%;
+			left: 5%;
+			top: 10%;
+		}
+		.swiper-slide.third .third_3{
+			position: absolute;
+			width: 58%;
+			left:35%;
+			top: 50%;
+		}
+
+		/* fourth */
+		.swiper-slide.fourth{
+			background-image: url(images/bg.png);
+			background-size: 100% 100%;
+			position: relative;
+		}
+		.swiper-slide.fourth .fourth_1{
+			position: absolute;
+			width: 58%;
+			left: 2%;
+			top: 2%;
+		}
+		.swiper-slide.fourth .fourth_2{
+			position: absolute;
+			width: 58%;
+			right: 5%;
+			top: 30%;
+		}
+		.swiper-slide.fourth .fourth_3{
+			position: absolute;
+			width: 58%;
+			right:5%;
+			top: 30%;
+		}
+
+		/* fifth */
+		.swiper-slide.fifth{
+			background-image: url(images/bg.png);
+			background-size: 100% 100%;
+			position: relative;
+		}
+		.swiper-slide.fifth .fifth_1{
+			position: absolute;
+			width: 58%;
+			left: 2%;
+			top: 55%;
+		}
+		.swiper-slide.fifth .fifth_2{
+			position: absolute;
+			width: 58%;
+			height: 40%;
+			left: 40%;
+			top: 2%;
+		}
+
+		.swiper-slide.fifth .fifth_3{
+			position: absolute;
+			width: 58%;
+			left: 40%;
+			top: 2%;
+		}
+
+		/* sixth */
+		.swiper-slide.sixth{
+			background-image: url(images/bg.png);
+			background-size: 100% 100%;
+			text-align: center;
+			font-size: 15px;
+		}
+		.swiper-slide.sixth .sixth_1{
+			width: 58%;
+			margin: auto;
+			margin-top: 8%;
+			padding-bottom: 20px;
+		}
+		.swiper-slide.sixth .sixth_2{
+			width: 65%;
+			margin: auto;
+			padding-bottom: 10px
+		}
+		.swiper-slide.sixth .sixth_3{
+			width: 58%;
+			margin: auto;
+			padding-bottom: 10px;
+			
+		}
+	</style>
+	<script>
+	$(function(){
+		// welcome	
+		$(".cover").animate({"left":"80%"},1000);
+
+		// 滑动按钮
+		upup();
+		function upup(){
+			$(".upicon").animate({"margin-top":"-10px","opacity":"0.2"},1000);
+			// $(".upicon").animate({"opacity":"0.5"},1500);
+			setTimeout(downdown,500);
+		}
+		function downdown(){
+			$(".upicon").animate({"margin-top":"10px","opacity":"1"},1000);
+			// $(".upicon").animate({"opacity":"1"},1500);
+			setTimeout(upup,500);
+		}
+
+
+		// music
+		var state = 1;
+		var music = document.getElementById("music");
+		var audio = document.getElementById("audio");
+		var music_pic = music.getElementsByClassName('music_pic')[0];
+		 $("#music").click(function(){
+        if (state == 1) {
+            audio.pause();
+            $(".music_bg").hide();
+            music_pic.style.animation = "none";
+            state = 2;
+
+        } else if (state == 2) {
+           audio.play();
+           $(".music_bg").show();
+           music_pic.style.animation = "music 2s linear infinite";
+            state = 1;
+        	
+    
+		}
+		})
+	
+		})
+	</script>
+</head>
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide wel">
+			    <div class="wel">
+			    	<img src="images/00-2.png" alt="">
+			    	<img src="images/00-1.png" alt="">
+			    	<div class="cover"></div>
+			    </div>
+			</div>
+			<div class="swiper-slide first"></div>
+			<div class="swiper-slide second">
+				 <div class="second1 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration='1.5s' swiper-animate-delay="1s">
+                    <img src="images/02-1.png" alt="" />
+                </div>
+                <div class="second_2 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration='1.5s' swiper-animate-delay="1.5s">
+                    <img src="images/02-2.png" alt="" />
+                </div>
+                <div class="second_3 ani" swiper-animate-effect="fadeOut" swiper-animate-duration='0s' swiper-animate-delay="1.5s">
+                    <img src="images/02-2.png" alt="" />
+                </div>
+			</div>
+			<div class="swiper-slide third">
+			 	<div class="third_1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration='1.5s' swiper-animate-delay="1.5s">
+                    <img src="images/03-1.png" alt="" />
+                </div>
+                <div class="third_2 ani" swiper-animate-effect="fadeOut" swiper-animate-duration='0s' swiper-animate-delay="1.5s">
+                    <img src="images/03-1.png" alt="" />
+                </div>
+                <div class="third_3 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration='1.5s' swiper-animate-delay="1s">
+                    <img src="images/03-2.png" alt="" />
+                </div>
+			</div>
+			<div class="swiper-slide fourth">
+		 		<div class="fourth_1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration='1.5s' swiper-animate-delay="1s">
+                    <img src="images/04-1.png" alt="" />
+                </div>
+                <div class="fourth_2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration='1.5s' swiper-animate-delay="1.5s">
+                    <img src="images/04-2.png" alt="" />
+                </div>
+                <div class="fourth_3 ani" swiper-animate-effect="fadeOut" swiper-animate-duration='0s' swiper-animate-delay="1.5s">
+                    <img src="images/04-2.png" alt="" />
+                </div>
+			</div>
+			<div class="swiper-slide fifth">
+				<div class="fifth_1 ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration='1.5s' swiper-animate-delay="1s">
+                    <img src="images/05-2.png" alt="" />
+                </div>
+                <div class="fifth_2 ani" swiper-animate-effect="fadeInRight" swiper-animate-duration='1.5s' swiper-animate-delay="1.5s">
+                    <img src="images/05-1.png" alt="" />
+                </div>
+                <div class="fifth_3 ani" swiper-animate-effect="fadeOut" swiper-animate-duration='0s' swiper-animate-delay="1.5s">
+                    <img src="images/05-1.png" alt="" />
+                </div>
+			</div>
+			<div class="swiper-slide sixth">
+				 <div class="sixth_1 ani" swiper-animate-effect="fadeIn" swiper-animate-duration='1.5s' swiper-animate-delay="0.3">
+                    <img src="images/06-1.png" alt="" />
+                </div>
+                <div class="sixth_2 ani" swiper-animate-effect="rubberBand" swiper-animate-duration='1.5s' swiper-animate-delay="0.3s">
+                    <img src="images/06-2.png" alt="" />
+                </div>
+                <div class="sixth_3 ani" swiper-animate-effect="flipInY" swiper-animate-duration='3s' swiper-animate-delay="1s">
+                    <img src="images/school.png" alt="" />
+                </div>
+                <div class="sixth_3 ani" swiper-animate-effect="shake" swiper-animate-duration='3s' swiper-animate-delay="0.3s">
+                     <p>长按二维码识别进入公众号</p>
+            </div>
+			</div>
+	
+	</div>
+	<!-- 滑动指示  -->
+	<div class="up">
+        <div class="upicon"></div>
+    </div>
+	<!-- music -->
+    <div id="music" >
+        <img src="images/music.gif" alt="" class="music_bg" onclick="music_control">
+        <img src="images/music_off.png" alt="" class="music_pic">
+        <audio src="images/bgmusic.mp3" autoplay="autoplay" loop="loop" id="audio"></audio>
+    </div>
+
+	<script>
+			var mark = true;  
+			var mySwiper=new Swiper(".swiper-container",{
+				direction:"vertical",
+				autoplay: 1000, 
+				onInit:function(swiper){
+					swiperAnimateCache(swiper);
+					swiperAnimate(swiper);
+				},
+				onSlideChangeEnd:function(swiper){
+					swiperAnimate(swiper);
+       				if (swiper.activeIndex == 1) {
+           			if (mark) {
+                	swiper.removeSlide(0);     
+                	mark = false;
+            		}
+            		swiper.stopAutoplay();  
+        		};
+
+				},
+
+			});
+	</script>
+	</div>
+</body>
+</html>
